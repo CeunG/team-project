@@ -1,0 +1,143 @@
+/*// 기본설정, 리셋부분 끝*/
+body,
+div,
+p,
+span,
+a,
+img,
+b,
+section,
+article,
+aside,
+header,
+footer,
+ul,
+li,
+dl,
+dt,
+dd,
+address,
+br,
+form,
+legend,
+fieldset,
+input,
+label,
+button,
+h1,
+h2,
+h3,
+h4,
+nav,
+ol,
+table,
+caption,
+tbody,
+thead,
+tfoot,
+th,
+td,
+col,
+strong,
+small,
+select,
+option,
+i,
+button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+body,
+a,
+input,
+select {
+  color: #34343b;
+  font-size: 0.9rem;
+}
+
+ul,
+ol,
+dl {
+  list-style: none
+}
+
+input,
+button,
+img,
+fieldset {
+  border: none;
+  background-color: transparent;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:focus {
+  text-decoration: none;
+  color: #222;
+}
+
+// 리셋부분 end
+
+
+$backColor: #ECF1F4;
+$colorSkyblue : #4089C9;
+$colorDarkBlue :#2E4F6E;
+$colorLightGray: #b6bfc6;
+$colorMiddleGray: #86919a;
+$borderLight: #DFDFDF;
+$borderDark :#808993;
+$colorDarkwhite :#F7F7F7;
+
+$fontSize12 : 0.75rem;
+$fontSize14 : 0.875rem;
+$fontSize16 : 1rem;
+$fontSize20 : 1.25rem;
+$fontSize22 : 1.375rem;
+$fontSize24 : 1.5rem;
+$fontSize26 : 1.625rem;
+$fontSize32 : 2rem;
+
+@mixin boxShadow {
+  box-shadow: 1px 1px 3px #a1a1a1;
+}
+
+.radius-15 {
+  border-radius: 15px;
+}
+
+.radius-25 {
+  border-radius: 25px;
+}
+
+.radius-500 {
+  border-radius: 500px;
+}
+
+.off {
+  display: none;
+}
+
+.screen-out {
+  width: 0px;
+  height: 0px;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  position: absolute;
+  top: -9999px;
+}
+
+
+
+
+// 기본설정, 리셋부분 끝
