@@ -1,0 +1,517 @@
+@import 'pops.scss';
+
+@mixin fontsb($size, $weight) {
+  font: {
+    size: $size;
+    weight: $weight;
+  }
+}
+
+@mixin profileCircle($width, $height) {
+  width: $width;
+  height: $height;
+  border-radius: 500px;
+  overflow: hidden;
+}
+
+@mixin backgroundSet($position, $size) {
+  background: {
+    position: $position;
+    size: $size;
+  }
+}
+
+.cate-tit {
+  @include fontsb(1rem, 700);
+}
+
+.sub-tit {
+  @include fontsb(16px, 700);
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+.bold-tit {
+  @include fontsb(14px, 700);
+  color: $colorDarkBlue;
+}
+
+.point-tit {
+  @include fontsb(28px, 700);
+}
+
+
+main {
+  overflow: hidden;
+  padding: 0 2%;
+  background-color: $backColor;
+  padding-top: 100px;
+  margin-left: 10%;
+
+  .cate-tit {
+    margin-bottom: 12px;
+    @include fontsb(28px, 700);
+  }
+
+  .grid-wrap {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5%;
+
+    >section {
+      padding: 3%;
+      margin-bottom: 2.5%;
+    }
+  }
+
+
+  section.sec-left {
+    grid-row: span 2;
+    grid-column: 1;
+    background-color: #fff;
+    position: relative;
+
+
+    //height: 100vh;
+    height: calc(100vh - 180px);
+    overflow-y: scroll;
+
+    //1
+    .mates-list-wrap {
+      border-bottom: 1px solid $colorDarkwhite;
+
+      position: relative;
+      display: grid;
+      grid-template-rows: auto auto;
+      grid-template-columns: auto auto;
+
+
+      .sub-tit {
+        grid-row: 1;
+        grid-column: 1;
+      }
+
+      .mates-list {
+        grid-row: 2;
+        grid-column: 1;
+        width: 80%;
+        overflow-x: scroll;
+
+        >ul {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          width: 100%;
+          column-gap: 3%;
+
+          li {
+
+            @include profileCircle(66px, 66px);
+            border: 1px solid $borderLight;
+
+            @for $i from 1 through 4 {
+              &.mates#{$i} {
+                span {
+                  display: block;
+                  width: 100%;
+                  height: 100%;
+                  font-size: 0;
+                  background:url('./images/pic-mate-#{$i}.png') no-repeat;
+                  background-position: center center;
+                  background-size: cover;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .mates-list-total {
+        position: absolute;
+        top: 50%;
+        left: 70%;
+        font-weight: 400;
+        font-size: 18px;
+      }
+
+      .btn-new-circle {
+        grid-row: 2;
+        grid-column: 2;
+        justify-self: end;
+
+        @include profileCircle(66px, 66px);
+        border: 1px solid $borderLight;
+      }
+    }
+
+    //1 end
+
+    //2
+    .form-search {
+      margin: 15px 0;
+      padding: 15px 0;
+
+      .txt-light {
+        display: block;
+        color: $colorMiddleGray;
+        @include fontsb(13px, 500);
+
+      }
+
+      .in-search-bar {
+        line-height: 1.8;
+        width: 80%;
+        border: 1px solid $colorLightGray;
+        border-radius: 4px;
+        padding-left: 3%;
+      }
+
+    }
+
+    //2 end
+
+
+    //3
+    .mates-recomm {
+      margin: 15px 0;
+      padding: 15px 0;
+      // height: 100vh;
+      // overflow-y: scroll;
+      // height: 100%;
+
+
+
+      .lists-wrap {
+        >ul {
+          >li {
+            border: 1px solid $colorLightGray;
+            padding: 3% 8%;
+            margin-bottom: 12px;
+
+            @for $i from 1 through 10 {
+              &:nth-of-type(#{$i}) {
+                .in-list {
+                  .pic-rmm-mate {
+                    background:url('./images/pic-mate-rcm-#{$i}.png') no-repeat;
+                    @include backgroundSet(center, cover)
+                  }
+                }
+              }
+            }
+
+            div.in-list {
+              display: grid;
+              // grid-template-columns: repeat(4, 1fr);
+              grid-template-columns: auto 1fr auto auto;
+              align-items: center;
+              column-gap: 2%;
+
+              .pic-rmm-mate {
+                @include profileCircle(52px, 52px);
+              }
+
+              .wrap-hash {
+                .sub-tit {
+                  font-weight: 700;
+                }
+
+
+                .hash-list {
+                  font-weight: 400;
+                  color: $colorDarkBlue;
+                  overflow: hidden;
+
+                  >li {
+                    float: left;
+                    margin-right: 2%;
+                  }
+                }
+              }
+
+              .input-date {
+                font-weight: 400;
+              }
+
+              .btn-area {}
+            }
+          }
+        }
+      }
+    }
+
+    //3 end
+
+
+    //pop slides
+  }
+
+  section.sec-my {
+    grid-row: 1;
+    grid-column: 2;
+    background-color: #fff;
+
+    .record-info-box {
+      // border: 1px solid red;
+      position: relative;
+      display: grid;
+      grid-template-rows: auto auto;
+      grid-template-columns: 2fr 1fr;
+
+      .sub-tit {
+        grid-row: 1;
+        grid-column: span 2;
+        // background-color: green;
+      }
+
+      .info-box-txt {
+        // background-color: blue;
+        padding-left: 2%;
+        grid-row: 2;
+        grid-column: 1;
+
+        >p {
+          margin-bottom: 20px;
+        }
+
+        .count-list {
+          overflow: hidden;
+
+          >li {
+            @include fontsb(0.8rem, 400);
+            color: $colorMiddleGray;
+
+            >span.point-tit {
+              display: block;
+              color: $colorSkyblue;
+            }
+          }
+        }
+
+      }
+
+      .pic-concept {
+        // background-color: black;
+        grid-row: 2;
+        grid-column: 2;
+        align-self: center;
+        border: 1px solid $colorLightGray;
+        border-radius: 4px;
+        padding: 35% 0;
+        margin-right: 10%;
+
+        .icon-file {
+          display: block;
+          width: 20px;
+          height: 20px;
+
+          margin: 0 auto;
+        }
+      }
+
+      .btn-graph {
+        // background-color: rgb(0, 255, 162);
+        position: absolute;
+        top: 5%;
+        right: 5%;
+
+        .btn-graph-link {
+          color: $colorMiddleGray;
+        }
+
+      }
+    }
+  }
+
+
+
+  section.sec-right {
+    background-color: #fff;
+    grid-row: 2;
+    grid-column: 2;
+
+    height: calc(100vh - 40vh);
+    height: calc(100vh - (31vh + 180px));
+    overflow-y: scroll;
+
+    .record-forms {
+
+      >section {
+        margin: 20px 0;
+        padding: 15px 0;
+      }
+
+      .sec-calendar {
+        background-color: $colorLightGray;
+        height: 120px;
+      }
+
+
+
+      @mixin sec-common {
+        .sec-top {
+          display: grid;
+
+          grid-template-columns: repeat(3, 1fr);
+
+          .sub-tit {}
+
+          .sec-ctrl {
+            grid-column: 3;
+            justify-self: end;
+          }
+
+        }
+
+        .chkform {
+          legend {
+            display: none
+          }
+
+          .chkform-list-wrap {
+            .chkform-list {
+              >li {
+                border: 1px solid $colorLightGray;
+                background-color: $colorDarkwhite;
+                border-radius: 4px;
+                padding: 2% 1%;
+                margin: 5px 0;
+
+
+                display: grid;
+                grid-template-columns: 1fr auto auto;
+                column-gap: 2%;
+
+                .input-wrap {
+                  >label {
+                    margin-left: 6px;
+                  }
+                }
+
+                .input-data {}
+
+                .btn-delte {}
+              }
+            }
+
+            .input-addlist {
+              padding: 2% 1%;
+              margin: 5px 0;
+              display: grid;
+              grid-template-columns: auto 1fr auto;
+              column-gap: 2%;
+              background-color: $colorDarkwhite;
+
+              .btn-plus {}
+
+              .new-input-wrap {}
+
+              .btn-submit {}
+            }
+          }
+        }
+      }
+
+
+      .sec-goal {
+        @include sec-common;
+      }
+
+      .sec-record {
+        @include sec-common;
+
+        .date-btns {
+          grid-column: 2;
+          overflow: hidden;
+
+          .date-today {
+            float: left
+          }
+
+          .btns {
+            float: right;
+
+            span.btn-prev {
+              margin-right: 4px;
+            }
+          }
+        }
+      }
+
+      .sec-diary {
+        .sec-top {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+
+          .sub-tit {}
+
+          .btns {
+            overflow: hidden;
+            justify-self: end;
+            float: right;
+
+            span.btn-prev {
+              margin-right: 4px;
+            }
+
+          }
+        }
+
+
+        .diary-all-wrap {
+
+          .diary-list-wrap {
+
+            >div {
+              padding: 3% 5%;
+              border: 1px solid $colorLightGray;
+              margin: 10px 0;
+              border-radius: 4px;
+
+
+              &.btn-add-wrap {
+                text-align: center;
+                padding: 10%;
+              }
+
+              &.content-diary {
+                position: relative;
+
+                .input-date {
+                  @include fontsb(14px, 400);
+                  color: $colorMiddleGray;
+                  margin-bottom: 20px;
+                }
+
+                .pic-area {
+                  width: 60%;
+                  margin: 0 auto;
+                  border: 1px solid $colorLightGray;
+                  padding: 10% 0;
+
+                  .icon-file {
+                    display: block;
+                    margin: 0 auto;
+                  }
+                }
+
+                .sub-tit {
+                  margin-top: 10px
+                }
+
+                .btn-delte {
+                  position: absolute;
+                  top: 3%;
+                  right: 5%;
+                }
+              }
+            }
+          }
+        }
+
+
+        // #pop-form {}
+
+      }
+    }
+  }
+}

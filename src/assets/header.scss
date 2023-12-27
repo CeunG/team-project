@@ -1,0 +1,254 @@
+@import 'PJTstyle';
+
+header {
+  z-index: 99;
+  width: 100%;
+  position: relative  ;
+}
+
+#logo{
+  color: $green;
+  @include bold-txt;
+}
+
+#header-intro {
+  @include boxShadow;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background-color: $black;
+}
+
+.header-intro-wrap {
+  padding: 0 5%;
+  height: 70px;
+  display: grid;
+  grid-template-columns: 10% 10% 2fr auto;
+  align-items: center;
+
+  #logo {
+    grid-column: 1;
+  }
+
+  .form-search {
+    grid-column: 3;
+
+    .search-bar {
+      border-radius: 4px;
+      border-bottom: 1px solid $borderLight;
+      font-size: $fontSize12;
+      line-height: $fontSize32;
+
+    }
+  }
+
+  .dropdown {
+    grid-column: 4;
+    display: block;
+    content: '';
+    clear: both;
+
+    >li {
+      float: left;
+      position: relative;
+
+      &:first-child {
+        .icon-dropmenu {
+          margin-left: 0;
+        }
+      }
+
+      .icon-dropmenu {
+        font-size: 0;
+        margin-left: 22px;
+      }
+
+      .dropdown-box {
+        font-size: 0.875rem;
+        position: absolute;
+        top: 46px;
+        right: 0;
+        @include boxShadow;
+        width: 160px;
+        background-color: $colorDarkwhite;
+        text-align: center;
+
+        p.dropdown-label {
+          padding: 0.5rem 0;
+          border-bottom: 1px solid $borderLight;
+          margin: 0;
+
+        }
+
+        .dropdown-list {
+          padding: 0;
+
+          >li {
+            &:first-child {
+              margin-top: 0.3rem
+            }
+
+            a {
+              display: block;
+              padding: 0.5rem 0;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+
+.category-trigger {
+  position: absolute;
+  top: 35%;
+  left: 15%;
+}
+
+
+//side navigation category start
+// #category {
+.category {
+
+  background-color: $black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 0 1%;
+  padding-top: 70px;
+  width: 10%;
+  transition: width 0.3s ease-in-out;
+
+
+  .section-me {
+    border-bottom: 2px solid white;
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    .pic-profile {
+      border-radius: 500px;
+      width: 60px;
+      height: 60px;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 2px solid $green;
+
+      span {
+        display: block;
+        width: 100%;
+        height: 100%;
+        font-size: 0;
+        background: url('./images/pic-porofile.png') no-repeat;
+        background-position: center center;
+        background-size: cover;
+      }
+    }
+
+    .nickname-me {
+      margin-top: 16px;
+      text-align: center;
+      @include semi-txt;
+    }
+  }
+
+
+  $category :&; //class .category
+
+  &:hover {
+    width: 12%;
+    transition: width 0.3s ease-in-out;
+  }
+
+  &.active {
+    width: 12%;
+    transition: width 0.3s ease-in-out;
+  }
+
+  &--lists {
+    padding-top: 20px;
+
+    >ul {
+      margin-top: 12px;
+      padding: 0 10%;
+
+      >li {
+        margin-bottom: 52px;
+        text-align: center;
+        position: relative;
+
+        .icon-cate {
+          font-size: 17px;
+        }
+
+        .category--lists-txt {
+          font-size: 0;
+          overflow: hidden;
+          visibility: hidden;
+          position: absolute;
+          top: 0;
+          left: -999px;
+          transition: left 0.3s ease-in-out;
+
+          &::after {
+            content: '';
+            display: block;
+            clear: both;
+            width: 0%;
+            height: 2px;
+            background-color: $green;
+            transition: width 0.4s ease-in-out;
+          }
+
+          &:hover {
+            color: $green;
+
+            &::after {
+              content: '';
+              display: block;
+              clear: both;
+              width: 100%;
+              height: 2px;
+              background-color: $green;
+              transition: width 0.4s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+
+
+
+    #{$category}.active &-li {
+      text-align: initial;
+    }
+
+    #{$category}.active &-txt {
+      font-size: initial;
+      overflow: visible;
+      visibility: visible;
+      // left: 32px;
+      left: 12px;
+      transition: left 0.3s ease-in-out;
+    }
+
+    #{$category}:hover &-li {
+      text-align: initial;
+    }
+
+    #{$category}:hover &-txt {
+      font-size: initial;
+      overflow: visible;
+      visibility: visible;
+      left: 32px;
+      transition: left 0.3s ease-in-out;
+    }
+
+  }
+
+}
