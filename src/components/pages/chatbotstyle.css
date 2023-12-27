@@ -1,0 +1,119 @@
+.chatbotbody {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+}
+.left-panel {
+  flex: 0 0 35%;
+  background-color: #f8fcff;
+  padding: 20px;
+}
+.newchat {
+  margin-left: 30%;
+  margin-top: 5%;
+  margin-bottom: 12%;
+  padding: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+  background-color: #1e88e5;
+  border: none;
+  color: #ffffff;
+  border-radius: 25px; /* 둥근 모서리 효과 */
+  font-size: x-large;
+}
+h5 {
+  margin: 10px;
+  margin-left: 30%;
+  font-weight: bold;
+}
+.right-panel {
+  height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.chat-header {
+  background-color: #ffffff;
+  padding: 10px;
+  height: 7%;
+  align-items: center;
+  box-shadow: 0 0 5px rgba(149, 149, 149, 0.5);
+}
+.chat-header h4 {
+  font-weight: bold;
+  padding: 5px;
+  height: 7%;
+}
+.chat-body {
+  flex: 1;
+  height: 100%;
+  padding: 20px;
+  overflow-y: scroll;
+}
+.message {
+  border-top: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 5px;
+  background-color: #e6e6e6;
+}
+#chat-container {
+  padding: 20px;
+  overflow-y: scroll;
+}
+#chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+#user-input {
+  width: 100%;
+  display: flex;
+  padding: 2px;
+  border: 1px solid lightgray;
+  border-radius: 10px; /* 둥근 모서리 효과 */
+}
+#user-input input {
+  flex: 1;
+  padding: 10px;
+  outline: none;
+  border: none;
+}
+#user-input button {
+  font-weight: bold;
+  border: none;
+  background-color: white;
+  color: #1e88e5;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.btn:active,
+.btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+.message-row {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  height: 2em; /* Adjust size as needed */
+  margin-right: 10px; /* For bot icon */
+  margin-left: 10px; /* For user icon */
+}
+
+.message-text {
+  flex-grow: 1;
+  /* Add other styles like padding, background color as needed */
+}
+
+.bot-message .icon {
+  order: -1; /* Move bot icon to the left */
+}
+
+.user-message .icon {
+  order: 1; /* Move user icon to the right */
+}

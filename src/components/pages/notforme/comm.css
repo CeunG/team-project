@@ -1,0 +1,130 @@
+.off{
+  display:none;
+}
+.on{
+  display:block;
+}
+.screen-out{
+  width:0px; height:0px; font-size:0;
+  line-height:0; overflow:hidden ;visibility:hidden; position:absolute; top:-9999px;
+}
+
+.search-bar{
+  font-size:14px;
+  padding-left:6px;
+  border-bottom:1px solid var(--border-color-light);
+  background-color:transparent;
+}
+.search-button{
+  background-color: transparent;
+  padding:2px 12px;
+  text-transform: uppercase;
+  
+}
+.txt-light{
+  font-size:13px;
+  color:#868E96;
+}
+
+.pic-profile{
+  border-radius:500px;
+  width:64px; height:64px;
+  overflow:hidden;
+  a{
+    display:block;
+    object-fit: cover;
+    img{
+      width:64px; height:64px;
+      object-fit:cover;
+    }
+  }
+}
+.f-w-medium{
+  font-size:16px;
+  font-weight:400;
+}
+
+.cate-tit{
+  font-size:18px;
+  line-height:18px;
+  font-weight:bold;
+}
+.sub-tit{
+  font-size:15px;
+  font-weight:700;
+  text-transform: capitalize;
+}
+.sub-tit-bottom8{
+  font-size:15px;
+  font-weight:700;
+  margin-bottom:8px;
+  text-transform: capitalize;
+}
+
+.hash-list{
+  a{
+    font-size: 13px;
+    color:#868E96;
+  }
+}
+.count-list{
+  font-size: 13px;
+  color:#868E96;
+}
+
+.input-date{
+  font-size: 13px;
+  color:#868E96;
+}
+
+
+.btn-fllw{
+  background-color: #4475AA;
+  color:#fff;
+  font-size:12px;
+  font-weight:400;
+  padding:4px 12px;
+  border-radius:4px;
+}
+
+
+.btn-delt{
+  /* font-size:0; */
+  width:16px; height:16px;
+  /* background:url('./images/icons/icon-delete.svg') no-repeat;
+  background-position: center;
+  background-size: contain; */
+}
+
+.btn-plus{
+  /* font-size:0; */
+  width:16px; height:16px;
+  /* background:url('./images/icons/icon-plus-small.svg') no-repeat;
+  background-position: center;
+  background-size: contain; */
+}
+
+.btn-submit{
+  background-color:#6C757D;
+  color:#fff;
+  font-size:12px;
+  font-weight:400;
+  padding:4px 12px;
+  border-radius:4px;
+}
+
+.btn-prev{
+  /* background:url('./images/icons/icon-btn-prev.svg') no-repeat;
+  background-position: center center;
+  background-size:contain; */
+}
+.btn-next{
+  /* background:url('./images/icons/icon-btn-next.svg') no-repeat;
+  background-position: center center;
+  background-size:contain; */
+}
+
+/* .box-shadow-light{
+  box-shadow: 3px 3px 5px rgb(0, 0, 0, .3);
+} 루트 변수로*/ 
+

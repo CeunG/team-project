@@ -1,0 +1,67 @@
+.map-body {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+}
+.map-left-panel {
+  flex: 0 0 45%;
+  background-color: #f8fcff;
+  padding: 20px;
+}
+.map-left-top {
+  font-size: larger;
+  font-weight: bolder;
+  margin-top: 5%;
+  margin-left: 25%;
+  margin-right: 5%;
+}
+.map-newchat {
+  width: 15%;
+  margin-top: 5%;
+  margin-left: 25%;
+  padding: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #1e88e5;
+  border-color: #4b97da;
+  color: #ffffff;
+  border-radius: 3px;
+  font-size: large;
+  font-weight: bold;
+}
+.map-newchat2 {
+  width: 15%;
+  margin-top: 5%;
+  padding: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #1e88e5;
+  background-color: #ffffff;
+  border-color: #4b97da;
+  border-radius: 5px;
+  font-size: large;
+  font-weight: bold;
+}
+.map-right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.map-size {
+  flex: 1;
+}
+.map-card-left {
+  width: 60%;
+  height: 20vh;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px rgba(149, 149, 149, 0.5);
+  border-radius: 15px;
+  margin: 3%;
+  margin-left: 25%;
+}
+.map-card-right {
+  width: 100%;
+  height: 20vh;
+  background-color: #ffffff;
+  border-radius: 15px;
+}

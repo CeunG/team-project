@@ -1,0 +1,535 @@
+@import './icons.css';
+@import './comm.css';
+@import './header.css';
+/*reset*/
+body,div,p,span,a,img,b,section,article,aside,header,footer,ul,li,dl,dt,dd,address,br,form,legend,fieldset,input,label,button,h1,h2,h3,h4,nav,ol,table,caption,tbody,thead,tfoot,th,td,col,strong,small,select,option,i,button{margin:0; padding:0;}
+
+
+body, a, input, select{
+  color:#212121;
+}
+
+ul, ol, dl{list-style:none}
+input, button, img, fieldset{border:none}
+a:link, a:visited{text-decoration: none;}
+a:hover, a:active, a:focus{
+  text-decoration:none;
+  color:#222;
+}
+
+/* 변수 */
+:root {
+  --border-color:#7f8389;
+  --border-color-light:#c4c9d0;
+  --box-shadow: 2px 2px 3px rgb(0, 0, 0, .3);
+}
+
+
+/*comm*/
+body{background-color:#ECF1F4;}
+#wrap{
+  width:100%;
+  position:relative;
+  
+}
+
+
+/* main */
+main{
+  width:90%;
+  margin-left:10%;
+}
+
+h2{
+  margin-left:2%;
+}
+.grid-wrap{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.sec-left, .sec-right{
+  padding:0 5%;
+}
+.sec-left{
+  background-color: #fff;
+  position:relative;
+  .mates-list-wrap{
+    position:relative;
+    overflow: hidden;
+    padding-top: 76px;
+    > .sub-tit{
+      margin-bottom:6px;
+    }
+    > div.mates-list{
+      float:left;
+      position:relative;
+      width:60%; height:65px;
+      overflow: scroll;
+      ul{
+        width:150%;
+        position:absolute;
+        top:0; left:0;
+        overflow:hidden;
+        li{
+          float:left;
+          width:62px; height:62px;
+          margin-right:2%;
+          border-radius:500px;
+          overflow: hidden;
+          border:1px solid var(--border-color);
+          > span{
+            display:block;
+            height: 100%;
+            font-size:0;
+          }
+        }
+      }
+    }
+
+    .mates-list-total{
+      position:absolute; top:50%; left:62%;
+    }
+    .btn-new-circle{
+      float:right;
+      border-radius:500px;
+      width:62px; height: 62px;
+      background-color:transparent;
+      border:1px solid var(--border-color);
+      /* font-size:0; */
+      /* background:url('./images/icon-plus.svg') no-repeat;
+      background-position:center; */
+      background-size:12px;
+    }
+  }
+  /* my mates end */
+
+  .form-search{
+    /* background-color: steelblue; */
+    margin-top:32px;
+    form{
+      .txt-light{
+        display:block;
+        margin-bottom:4px;
+      }
+      .in-search-bar{
+        width:80%;
+        font-size:14px;
+        line-height:26px;
+        background-color:transparent;
+        border:1px solid #dfd8d8;
+        border-radius:2px;
+      }
+      .in-search-button{
+        padding:0 14px;
+        line-height:26px;
+        background-color: #6C757D;
+        color:#fff;
+        font-size:14px;
+        border-radius:2px;
+      }
+    }
+  }
+
+}
+.sec-left {
+  background-color:#fff;
+  height: 100vh;
+  overflow-y: scroll;
+  
+  .mates-recomm{
+    margin-top: 42px;
+
+    > .sub-tit{margin-bottom:6px;}
+    .lists-wrap{
+      /* @@@@@@@@@@@@@@@@@@@@@@@@@ */
+      /* @@@@@@height:100vh;@@@@@@ */
+      /* sec-right 길에이 맞춰서 */
+      /* 높이 정하고 스트롤 결정하기 */
+      /* @@@@@@@@@@@@@@@@@@@@@@@@@ */
+      > ul{
+        > li{
+          margin-bottom:15px;
+          border:1px solid #6C757D;
+          border-radius:500px;
+          overflow:hidden;
+
+          .in-list{
+            padding:14px 7%;
+            display:grid;
+            grid-template-columns: 1fr 3fr 1fr 1fr;
+            align-content: center;
+
+            .pic-rmm-mate{
+              grid-column: 1;
+              display:block;
+              width:60px; height:60px; font-size:0;
+              border-radius:4px;
+              overflow:hidden;
+              > img{
+                width:100%; height:100%;
+                object-fit: contain;
+              }
+            }
+
+            .wrap-hash{
+              grid-column: 2;
+              margin-left:10px;
+              align-self: center;
+              /* .sub-tit{} */
+              .hash-list{
+                overflow:hidden;
+                > li{
+                  float:left;
+                  margin-right:6px;
+                  
+                }
+              }
+            }
+            
+            .input-date{
+              align-self: center;
+              text-align:center;
+              font-size:13px; font-weight:400;
+            }
+
+            .btn-area{
+              align-self: center;
+              text-align:center;
+            }
+          }
+
+
+        }
+      }
+    }
+  }
+ 
+  
+}
+
+/* pops */
+#pop-slide{
+  display:none;
+}
+/* pops end*/
+/* sec-left end */
+
+
+.sec-right{
+  position:relative;
+  .sub-tit{
+   margin-bottom:8px;
+  }
+  .record-info-box{
+    background-color:#fff;
+    position:absolute; top:50px; left:0;
+    width:100%;
+    padding:26px 5%;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    height:170px;
+
+    .info-box-txt{
+      float:left;
+      width:calc(100% - 80px);
+      > .sub-tit{
+        margin-bottom:8px;
+      }
+      .count-list{
+        overflow:hidden;
+        > li{
+          &:first-child{
+            float:left;
+            margin-right:10%;
+          }
+          &:last-child{
+            float:right;
+          }
+        }
+      }
+      .btn-graph{
+        a{
+          display: block;
+          font-size: 13px;
+          color:#868E96;
+          > i{
+            margin-left:6px;
+            font-size:15px;
+          }
+        }
+      }
+    }
+    
+    .pic-concept{
+      float:right;
+      width:80px;
+      
+      border:1px solid #6C757D;
+      width:80px; height:80px; 
+      > span{
+        display:block;
+        width:100%; height:100%; 
+        /* font-size:0;
+        background:url("./images/icons/icon-picture.svg") no-repeat;
+        background-position:center center; */
+        background-size:40%;
+      }
+    }
+
+    opacity: 0.9;
+  }
+ 
+}
+
+.sec-right {
+  height: 100vh;
+  padding-top:50px;
+  overflow-y: scroll;
+  .record-forms{
+    margin-top:110px;
+
+    .sec-calendar{
+      background-color: #556d83;
+      width:100%; height:120px;
+      margin-top:171px;
+      margin-bottom: 30px;
+    }
+
+    .sec-g-r-wrap{
+
+      .sec-top{
+        margin-bottom:10px;
+        display:grid;
+        grid-template-columns: auto 1fr;
+        .sub-tit-bottom8{
+          margin-right:14px;
+        }
+        .sec-ctrl{
+          display:grid;
+          grid-template-columns: 1fr auto;
+
+          .date-btns{
+            grid-column:1;
+            overflow: hidden;
+            .date-today{
+              display: block;
+              float:left;
+            }
+            .btns{
+              float:left;
+              overflow:hidden;
+              span{
+                display:block;
+                float:left;
+                width:22px; height:22px;
+                font-size:0;
+                
+              }
+              .btn-prev{
+                margin-left: 22px;
+              }
+              .btn-next{
+                margin-left: 4px;
+              }
+            }
+          }
+
+          .selectbox-sort{
+            grid-column: 2;
+          }
+        }
+      }
+
+      .chkform{
+        width:90%; margin:0 auto;
+        margin-bottom:42px;
+        
+        form{
+          legend{display:none;}
+
+          /* 개별 */
+          .goal-list-wrap{
+            .chkform-list{
+              > li{
+                padding:12px 4%;
+                margin-bottom:6px;
+                background-color: #fff;
+                border:1px solid #c4c9d0;
+                border-radius:4px;
+                display:grid;
+                grid-template-columns: 3fr 1fr 16px;
+                
+                .input-wrap{
+                  > label{
+                    margin-left:6px;
+                  }
+                }
+                .input-delt{
+                  align-self:center;
+                }
+
+              }
+            }
+          }
+          .regi-list-wrap{
+            .chkform-list{
+              > li{
+                padding:12px 4%;
+                margin-bottom:6px;
+                background-color: #fff;
+                border:1px solid #c4c9d0;
+                border-radius:4px;
+                display:grid;
+                grid-template-columns: 1fr 16px;
+                
+                .input-wrap{
+                  > label{
+                    margin-left:6px;
+                  }
+                }
+                .btn-delt{
+                  align-self:end;
+                  align-self:center;
+                }
+
+              }
+            }
+          }
+          /* 개별 끝*/
+          
+          .chkform-list-wrap{
+            .input-addlist{
+              background-color:#d5d9de;
+              border:1px solid #c4c9d0;
+              display:grid;
+              grid-template-columns: 16px 1fr auto;
+
+              .btn-plus{
+                align-self: center;
+              }
+              > div{
+                align-self: center;
+                > input{
+                  width:80%;
+                  background-color:#d5d9de;
+                }
+              }
+              .btn-submit{
+                align-self: center;
+              }
+
+            }
+          }
+
+        }
+      }
+
+
+
+    }
+    /* 목표,기록 공통 끝 */
+
+
+    .sec-diary{
+      margin-bottom: 64px;
+
+      .sec-top{
+        margin-bottom:10px;
+        display:grid;
+        grid-template-columns: 1fr auto;
+        /* .sub-tit-bottom8{} */
+        .btns{
+          float:left;
+          overflow:hidden;
+          span{
+            display:block;
+            float:left;
+            width:22px; height:22px;
+            font-size:0;
+            
+          }
+          .btn-prev{
+            margin-left: 22px;
+          }
+          .btn-next{
+            margin-left: 4px;
+          }
+        }
+      }
+      
+      .diary-list-wrap{
+        width:100%;
+        overflow-x: scroll;
+        display:grid;
+        grid-template-columns: 20% 1fr;
+        .btn-add-wrap{
+          border-radius:4px;
+          border:1px solid #c4c9d0;
+          height:140px;
+          margin-right: 16px;
+          .btn-plus{
+            width:100%; height: 100%;
+          }
+        }
+        .diary-list{
+          width:200%;
+          display:flex;
+          flex-flow: row wrap;
+          align-items: flex-start;
+          >li{
+            position:relative;
+            margin-right: 16px;
+            padding-bottom:20px;
+            width:20%;
+            border-radius:4px;
+            border:1px solid #c4c9d0;
+            .input-date{
+              padding:10px 0 10px 16px;
+              background-color:#e8eef6;
+              border:1px solid #c4c9d0;
+            }
+            .pic-area{
+              padding-top:12px;
+              overflow: hidden;
+              img{
+                border-radius:4px;
+                width:80%;
+                margin:0 10%;
+                height: 100%;
+              }
+            }
+            .sub-tit{
+              margin-top: 24px;
+              padding:0 16px;
+            }
+            .content-txt{
+              padding:0 16px;
+            }
+            .btn-delt{
+              position:absolute; 
+              bottom:0; right:0;
+            }
+          }
+        }
+      }
+
+
+
+      #pop-form{
+        display: none;
+      }
+
+      
+    }
+
+
+  }
+
+  
+  
+}
+
+/* sec-right end */
+
+/* main end*/
