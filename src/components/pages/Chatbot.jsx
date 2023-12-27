@@ -7,7 +7,7 @@ function Chatbot() {
   const [userInput, setUserInput] = useState("");
   const [messages, setMessages] = useState([]);
 
-  const apiKey = "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";
+  const apiKey = "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";
   const apiEndpoint = "https://api.openai.com/v1/chat/completions";
 
   const addMessage = (sender, message) => {
@@ -19,23 +19,17 @@ function Chatbot() {
       .slice(0)
       .reverse()
       .map((message, index) => (
-        <div key={index} className={`${message.sender}-message`}>
+        <div key={index} className={`${message.sender}-message-block`}>
           {message.sender === "bot" && (
-            <img
-              src={Bot}
-              alt='bot'
-              className='bot-icon'
-              style={{ height: "1em", marginRight: "10px" }}
-            />
+            <div className='bot-icon'>
+              <img src={Bot} alt='bot' className='bot-icon' />
+            </div>
           )}
-          {message.message}
+          <div className={`${message.sender}-message-text`}>{message.message}</div>
           {message.sender === "user" && (
-            <img
-              src={User}
-              alt='user'
-              className='user-icon'
-              style={{ height: "1em", marginLeft: "10px" }}
-            />
+            <div className='user-icon'>
+              <img src={User} alt='user' className='user-icon' />
+            </div>
           )}
         </div>
       ));
@@ -85,14 +79,15 @@ function Chatbot() {
   };
 
   return (
-    <div className='chatbotbody'>
-      <div className='left-panel'>
-        <button className='newchat'>+ New Chat</button>
-        <h5>최근 대화목록</h5>
-        <ul className='list-group'>{/* Recent chats will be listed here */}</ul>
+    <div className='chatbot-body'>
+      <div className='chat-left-panel'>
+        <button className='recent-chat-list'>+ New Chat</button>
+        <h5 className='chat-h5'>최근 대화목록</h5>
+        <button className='recent-chat-list2'> 🗒 내 정보를 바탕으로 식단을 추천해줘 </button>
+        <button className='recent-chat-list2'>🗒 주변에 가까운 이비인후과를 검색해서 알려...</button>
       </div>
 
-      <div className='right-panel'>
+      <div className='chat-right-panel'>
         <div className='chat-header'>
           <h4>&nbsp;&nbsp;&nbsp;&nbsp;AI Chat Bot</h4>
         </div>
