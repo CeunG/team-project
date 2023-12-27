@@ -65,7 +65,7 @@ const Map = () => {
         </button>
         <div>
           <div>
-            <div className='map-card-right'>방화 병원 </div>
+            <div className='map-card-right'>방화 병원</div>
           </div>
         </div>
       </div>
@@ -74,3 +74,4 @@ const Map = () => {
 };
 
 export default Map;
+
