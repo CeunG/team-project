@@ -7,7 +7,9 @@ const Mypage = () => {
   const [profileModalVisible, setProfileModalVisible] = useState(false);
   const [idchangeModalVisible, setIdchangeModalVisible] = useState(false);
   const [passwordModalVisible, setPasswordModalVisible] = useState(false);
-  const [mateModalVisible, setMateModalVisible] = useState(false); // 중복 선언 수정
+  const [mateModalVisible, setMateModalVisible] = useState(false); 
+  const [exerciseGoal, setExerciseGoal] = useState('');
+  const [dietGoal, setDietGoal] = useState('');
 
   const openProfileModal = () => {
     setProfileModalVisible(true);
@@ -86,12 +88,6 @@ const Mypage = () => {
     setGoalModalVisible(false);
   };
 
-  const saveGoalChanges = () => {
-    // 목표 저장 로직을 추가하세요
-    console.log('Saving goal:', goal);
-    closeGoalModal();
-  };
-
   const mateImages = {
     1: 'https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/default-avatar-profile-picture-female-icon.png',
     2: 'https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/default-avatar-profile-picture-female-icon.png',
@@ -101,6 +97,11 @@ const Mypage = () => {
 
   const saveDeletedMateList = () => {
     console.log("Saving deleted mate list");
+  };
+
+  const saveGoalChanges = () => {
+    console.log('운동 목표:', exerciseGoal);
+    console.log('식단 목표:', dietGoal);
   };
 
   return (
@@ -191,7 +192,7 @@ const Mypage = () => {
     <span className="close" onClick={closeMateModal}>&times;</span>
     <h1>메이트 수정</h1>
     <p>현재 메이트 목록:</p>
-    <ul>
+    <ul className='matelist'>
       {mateList.map((mate) => (
         <li key={mate.id} onClick={() => selectMate(mate)} className={`mate-item ${selectedMate && selectedMate.id === mate.id ? 'selected-mate' : ''}`}>
           <img src={mateImages[mate.id]} alt={`mate-${mate.id}`} className="mate-profile-img" />
@@ -202,7 +203,7 @@ const Mypage = () => {
     </ul>
     {selectedMate && (
       <div>
-        <p>선택된 메이트: {selectedMate.name} 를 삭제하시겠습니까?</p>
+        <p style={{padding:'10px 0'}}>선택된 메이트: {selectedMate.name} 를 삭제하시겠습니까?</p>
         <button onClick={deleteMate}>삭제</button>
       </div>
     )}
@@ -214,19 +215,30 @@ const Mypage = () => {
 
  {/* Goal Edit Popup */}
  <div id="goalModal" className="modal" style={{ display: goalModalVisible ? 'block' : 'none' }}>
-        <div className="modal-content">
-          <span className="close" onClick={closeGoalModal}>&times;</span>
-          <h1>목표 수정</h1>
-          <input
-            type="text"
-            placeholder="목표를 입력하세요"
-            value={goal}
-            onChange={(e) => setGoal(e.target.value)}
-          />
-          <button onClick={saveGoalChanges}>저장</button>
-        </div>
-      </div>
-      
+  <div className="modal-content">
+    <span className="close" onClick={closeGoalModal}>&times;</span>
+    <h1>목표 수정</h1>
+    <label htmlFor="weightGoal" style={{ fontSize: '16px', fontWeight: 'bold', color: '#40ad8e' }}>목표 체중:</label>
+    <input
+      id="weightGoal"
+      type="text"
+      placeholder="몸무게 목표를 입력하세요"
+    />
+    <label htmlFor="exerciseGoal" style={{ fontSize: '16px', fontWeight: 'bold', color: '#40ad8e' }}>운동 목표:</label>
+    <input
+      id="exerciseGoal"
+      type="text"
+      placeholder="운동 목표를 입력하세요"
+    />
+    <label htmlFor="dietGoal" style={{ fontSize: '16px', fontWeight: 'bold', color: '#40ad8e' }}>식단 목표:</label>
+    <input
+      id="dietGoal"
+      type="text"
+      placeholder="식단 목표를 입력하세요"
+    />
+    <button onClick={saveGoalChanges}>저장</button>
+  </div>
+</div>
     </main>
   );
 };

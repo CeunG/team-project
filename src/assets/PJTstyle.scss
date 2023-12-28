@@ -156,9 +156,16 @@ input::placeholder {
         @include normal-txt;
         color: $gray;
       }
+
+
+
     }
   }
-  
+  .modal h1{
+    @include semi-txt;
+    color: $green;
+    margin-bottom: 8px;
+  }
   //form
   .form {
     .form-control {

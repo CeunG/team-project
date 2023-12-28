@@ -21,7 +21,7 @@ const Login = () => {
   };
 
   return (
-    <main className="loginpage-content" style={{ height: '99%', width: '100%', backgroundColor: '#ECF1F4' }}>
+    <main className="loginpage-content" style={{ height: '99%', width: '100%' }}>
         <div className="login-container">
         <div className="login">
           <h2>로그인</h2>

@@ -17,7 +17,7 @@ const Sign = () => {
   };
 
   return (
-    <main className="sign-content" style={{ height: '99%', width: '100%', backgroundColor: '#ECF1F4' }}>
+    <main className="sign-content" style={{ height: '99%', width: '100%' }}>
       <div className="sign-container">
         <div className="sign">
           <h2>회원가입</h2>

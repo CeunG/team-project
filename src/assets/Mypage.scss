@@ -8,7 +8,7 @@
 }
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(2, minmax(550px, 1fr));
+  grid-template-columns: repeat(2, minmax(550px, 100%));
   justify-content: center;
 }
 
@@ -73,15 +73,23 @@
   }
 }
 
-/* Pop up */
+/* modal */
 
 .modal-content {
   background-color: $black;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 50%;
+  border: 1px solid $gray;
+  width: 80%;
+  max-width: 600px;
   text-align: center;
+  border-radius: 15px;
+  padding: 30px 0;
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  transform: translate(0%);
+  display: flex;
+  align-items: center;
+  
 
   img {
     text-align: center;
@@ -91,19 +99,31 @@
   input {
     display: block;
     margin: 0 auto;
-    margin-top: 10px;
+    margin: 20px auto;
+    max-width: 300px;
+    box-sizing: border-box;
+
   }
 
   button {
     margin-top: 30px;
+    width: 100%; 
+    max-width: 200px; 
+    box-sizing: border-box; 
+    margin: 0 auto;
+    margin-bottom: 20px;
   }
 }
 
 .close {
   color: $gray;
   float: right;
-  font-size: 28px;
+  font-size: 40px;
   font-weight: bold;
+  margin-right: 10px;
+  position: absolute;
+  top: 0px;
+  right: 10px;
 
   &:hover,
   &:focus {
@@ -193,18 +213,18 @@
 
 /* modal - mate edit */
 .mate-profile-img {
-  width: 40px;
-  height: 40px;
+  width: 5%;
   border-radius: 50%;
-  margin-right: 10px;
+  margin: 0 auto;
 }
-
 .mate-name {
-  font-size: 16px;
+  @include light-txt; 
 }
 
 .selected-mate {
-  background-color: #f0f0f0;
+  background-color: $green;
+  @include normal-txt;
+  color: $red;
 }
 
 .text-center {
@@ -213,23 +233,4 @@
 
 #mateModal .modal-content {
   text-align: center;
-}
-
-.selected {
-  color: #007bff;
-  font-weight: bold;
-}
-
-.save-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 25px;
-  background-color: #00a4ff;
-  color: white;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #007bff;
-  }
 }

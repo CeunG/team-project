@@ -1,8 +1,15 @@
+@import 'reset.scss';
+@import 'header.scss';
+@import 'PJTstyle.scss';
+
 .main-content {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+.loginpage-content{
+  background-color: $dark;
 }
 
 .login-container {
@@ -14,7 +21,7 @@
 }
 
 .login {
-  background-color: white;
+  background-color: $black;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -22,12 +29,14 @@
 
   h2 {
     text-align: center;
-    color: #3f51b5;
+    color: $green;
   }
 
   label {
     display: block;
     margin-bottom: 5px;
+    color: $gray;
+    @include normal-txt;
   }
 
   input {
@@ -40,14 +49,14 @@
   }
 
   .error {
-    color: red;
+    color: $red;
     margin-bottom: 10px;
   }
 
   button {
     width: 100%;
     padding: 10px;
-    background-color: #00a4ff;
+    background-color: $green;
     color: white;
     border: none;
     border-radius: 5px;
