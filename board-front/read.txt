@@ -1,0 +1,15 @@
+아이콘들
+import { 이곳에 } from '@mui/icons-material/NotificationsActiveOutlined';
+- 헤더 인트로 notice 부분 -> NotificationsActiveOutlinedIcon
+- 헤더 인트로 마이페이지 부분 -> NotificationsActiveOutlinedIcon
+
+
+기본 enter button small
+<Button variant="contained" size="small">Enter</Button>
+
+<Button className="in-follow-btn" variant="contained" size="small" sx={{ ml: 1, flex: 1, borderRadius: ' 500px', fontSize: '13px' }}>Follow</Button>
+
+<Fab className="btn-new-circle" color="secondary" aria-label="add">
+  <AddIcon />
+</Fab>
+
