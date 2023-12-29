@@ -1,0 +1,79 @@
+@import 'reset.scss';
+@import 'header.scss';
+@import 'PJTstyle.scss';
+
+.home-wrap{
+    background-color: $dark;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.home-wrap h1{
+    margin: 16px 0;
+    @include semi-txt;
+    color: $green;
+}
+
+.main-banner {
+    text-align: center; 
+  }
+
+.main-banner img{
+    width: 90%;
+    padding: 3%;
+    position: relative;
+    left: 5%;   
+    margin-top: 20px;
+}
+
+.sub-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    left: 5%;
+    position: relative;
+    max-width: 1400px;
+}
+
+.sub-banner1,
+.sub-banner2,
+.sub-banner3{
+    flex: 0 1 auto;
+    text-align: center;
+    background-color: $black;
+    border: 1px solid $gray;
+    margin: 0 10px;
+    height: auto;
+    width: 100%;
+}
+
+.sub-banner1 img,
+.sub-banner2 img,
+.sub-banner3 img {
+  width: 60%; 
+  height: auto; 
+  display: block; 
+  border-radius: 8px; 
+  box-sizing: border-box; 
+  margin:  0 auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sub-banner1 img:hover,
+.sub-banner2 img:hover,
+.sub-banner3 img:hover {
+  transform: scale(1.1);
+}
+
+.sub-banner1 p,
+.sub-banner2 p,
+.sub-banner3 p{
+    margin: 20px 0;
+    @include normal-txt;
+    color: $gray;
+}
+
+

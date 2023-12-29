@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import '../assets/Mypage.scss';
 
 const Mypage = () => {
@@ -104,8 +103,10 @@ const Mypage = () => {
     console.log('식단 목표:', dietGoal);
   };
 
+
+
   return (
-    <main className="main-content" style={{ height: '99%', width: '100%' }}>
+    <main className="main-content" >
       <div className="middle">
         <div className="middle-banner">
           <p style={{ fontWeight: 'bold', fontSize: '3rem' }}>MY PAGE</p>
