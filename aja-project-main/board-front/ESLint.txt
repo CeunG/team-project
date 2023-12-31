@@ -1,0 +1,245 @@
+ESLint
+  https://eslint.org/
+  https://github.com/eslint/eslint
+  https://eslint.org/docs/rules/
+
+  1. 설치
+    npm i -D eslint 
+
+  2. eslint 설정 파일 작성
+    npx는 node_modules 내부에 @moduleName이 붙은 모듈을 실행하는 명령
+      npm init @eslint/config 
+
+       ✔ How would you like to use ESLint? · eslint를 어떻게 사용할 것인가?
+	        To check syntax and find problems
+      ✔ What type of modules does your project use? · 프로젝트에서 사용하는 모듈 방식은?
+	        JavaScript => import/export
+        	Node => require
+          	JavaScript modules (import/export)
+      ✔ Which framework does your project use? · 프로젝트에서 사용하는 프레임워크는?
+	        ES6
+      ✔ Does your project use TypeScript? · 타입스크립트 사용 여부?
+	        No
+      ✔ Where does your code run? · 코드가 실행되는 위치는? (키보드로 이동. 스페이스로 체크, 해제)
+	        둘 다 체크 가능
+          Browser
+          Node
+      ✔ What format do you want your config file to be in? · 설정 파일은 어느 형식으로 생성할 것인가?
+	        JSON
+
+
+      npx eslint A01_Variable.js      검사 실행
+
+        "eslint:recommended"는 rules page에 있는 체크표시된 모든 규칙들을 활성화.
+        참조] https://eslint.org/docs/rules/
+
+        ESLint에는 수정 가능한 규칙과 불가능한 규칙이 있다. 렌치표시(🔧)가 붙은 것은 --fix옵션으로 자동 수정할 수 있는 규칙
+
+        "no-extra-semi" 등은 규칙 이름이고 규칙에 설정하는 값은 3가지로 나뉜다.
+          "off" 또는 0 : 끔
+          "warn" 또는 1 : 경고
+          "error" 또는 2 : 오류
+
+      Airbnb ESLint에는 eslint-config-airbnb와 eslint-config-airbnb-base가 있음.
+      base는 관련 규칙을 포함하지 않는 것이다. base로 설치하려면 아래 명령어에서 airbnb 뒤에 -base 를 붙인다.
+
+      $ npm info "eslint-config-airbnb@latest"    확인
+      $ npm i -D eslint-config-airbnb             설치 
+      $ npm i -D eslint-config-google
+
+      .eslintre.json에 추가
+        "extends": [
+          "eslint:recommended",
+          "google"
+        ],
+
+
+    3. eslint를 이용한 검사
+      npx eslint fileName
+      npx eslint fileName --fix
+
+    4. VSCode에서 사용
+      ESLint plugin 설치
+
+
+prettier
+  https://prettier.io/
+  https://github.com/prettier/prettier
+
+
+  1. prettier 설치
+    npm i -D prettier eslint-config-prettier eslint-plugin-prettier
+
+    eslint 설정 파일 수정
+    "extends": [
+      "google",
+      "eslint:recommended",
+      "prettier"
+    ],
+    ...
+    "rules": {
+      "prettier/prettier": "error",
+      "no-unused-vars": "off"
+    },
+    "plugins": [
+      "prettier"
+    ],
+
+  2. prettierrc
+    {
+        "arrowParens": "avoid",			  // 화살표 함수 괄호 사용 방식
+        "bracketSpacing": false, 		  // 객체 리터럴에서 괄호에 공백 삽입 여부 
+        "endOfLine": "auto", 			    // EoF 방식, OS별로 처리 방식이 다름 
+        "htmlWhitespaceSensitivity": "css", 	// HTML 공백 감도 설정
+        "jsxBracketSameLine": false,		      // JSX의 마지막 `>`를 다음 줄로 내릴지 여부 
+        "jsxSingleQuote": false, 		  // JSX에 singe 쿼테이션 사용 여부
+        "printWidth": 80, 			      //  줄 바꿈 할 폭 길이
+        "proseWrap": "preserve", 		  // markdown 텍스트의 줄바꿈 방식 (v1.8.2)
+        "quoteProps": "as-needed", 		// 객체 속성에 쿼테이션 적용 방식
+        "semi": true, 				        // 세미콜론 사용 여부
+        "singleQuote": true, 			    // single 쿼테이션 사용 여부
+        "tabWidth": 2, 			          // 탭 너비 
+        "trailingComma": "all", 			// 여러 줄을 사용할 때, 후행 콤마 사용 방식
+        "useTabs": false, 			      // 탭 사용 여부
+        "vueIndentScriptAndStyle": true, 		// Vue 파일의 script와 style 태그의 들여쓰기 여부 (v1.19.0)
+        "parser": '', 				        // 사용할 parser를 지정, 자동으로 지정됨
+        "filepath": '', 				      // parser를 유추할 수 있는 파일을 지정
+        "rangeStart": 0, 			        // 포맷팅을 부분 적용할 파일의 시작 라인 지정
+        "rangeEnd": Infinity, 			  // 포맷팅 부분 적용할 파일의 끝 라인 지정,
+        "requirePragma": false, 			// 파일 상단에 미리 정의된 주석을 작성하고 Pragma로 포맷팅 사용 여부 지정 (v1.8.0)
+        "insertPragma": false, 			  // 미리 정의된 @format marker의 사용 여부 (v1.8.0)
+        "overrides": [ 				        // 특정 파일별로 옵션을 다르게 지정함, ESLint 방식 사용
+          {
+            "files": "*.json",
+            "options": {
+            "printWidth": 200
+            }
+          }
+        ], 
+    }
+
+
+    위에서 필요한 설정만 지정.
+    {
+      "singleQuote": true,
+      "semi": true,
+      "useTabs": false,
+      "tabWidth": 2,
+      "trailingComma": "all",
+      "printWidth": 150,
+      "endOfLine": "auto",
+      "bracketSpacing": false,
+      "jsxSingleQuote": true
+    }
+
+  3. 실행
+    npx eslint filename --fix
+
+
+
+Babel 작업 설정
+  https://babeljs.io/
+
+  1. package.json 파일 생성
+    npm init -y
+
+  2. babel 모듈 설치 v7
+    1) 공통 모듈
+      npm i -D @babel/core @babel/cli
+
+    2) ES5로 변환 모듈
+      npm i -D @babel/preset-env
+
+
+    변환
+      npx babel src -d dist
+      npx babel src -d dist --presets @babel/preset-env
+      npx babel src/A16_GeneratorFun.js --out-file dist/A16_GeneratorFun.js
+
+
+  3. babel plugin은 필요에 따라 설치
+    
+    https://babeljs.io/docs/plugins-list 
+
+    npm i -D @babel/runtime
+    npm i -D @babel/plugin-transform-arrow-functions
+
+  4. Project 폴더에 Babel 환경 설정 파일 작성
+  
+    https://babeljs.io/docs/usage
+
+    1) .babelrc 라는 이름으로 새로운 파일 작성
+    2) 작성한 '.babelrc' 파일에 다음을 기술
+      {
+        "presets": [
+          "@babel/preset-env"
+        ],
+        "plugins": [
+          필요에 따라 등록한다 
+          "@babel/plugin-transform-arrow-functions",
+          ...
+        ]
+      }
+
+  5. 빌드
+    특정 디렉토리 안에 모든 JS 파일을 지정한 폴더에 출력
+      npx => node_modules에 설치된 JavaScript 모듈을 실행하는 경우 사용
+      글로벌에 설치했다면 npx 생략하고 명령 실행
+      
+      npx babel src -d dist
+      npx babel src -d dist --presets @babel/preset-env
+
+    특정 파일만 지정한 폴더에 변환.
+      npx babel src/A16_GeneratorFun.js --out-file dist/A16_GeneratorFun.js
+
+      
+    package.json에 등록하고 사용
+
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "babel src -d dist"
+    },        
+
+
+
+Webpack 설정
+  설치
+    npm i -D webpack webpack-cli
+
+  설정 파일 작성
+    npx webpack-cli init
+
+
+    추가 모듈 설치가 필요하다는 메시지가 출력되면 설치한다.
+    
+    1. Which of the following JS solutions do you want to use? (Use arrow keys)
+      어떤 솔루션을 사용할 것인가?                                          [ ES6 ]
+
+    2. Do you want to use webpack-dev-server? (Y/n)
+      개발 서버를 사용할 것인가? (live-server와 같은 환경을 구축해 줄까)          [ Y ]
+
+    3. Do you want to simplify the creation of HTML files for your bundle? (Y/n)
+      간단한 번들용 HTML 파일을 생성할 것인가?                                [ Y ]
+
+    4. Do you want to add PWA support? (Y/n)
+      PWA 지원을 추가 할 것인가?                                           [ N ]
+
+    5. Which of the following CSS solutions do you want to use? (Use arrow keys)
+      어떤 CSS 솔루션을 사용할 것인가?                                      [ CSS Only ]
+
+    6. Will you be using PostCSS in your project? (Y/n)
+      프로젝트에서 PostCSS를 사용할 예정인가?                                 [ N ]
+
+    7. Do you want to extract CSS for every file? (Use arrow keys)
+      모든 파일에서 CSS를 추출할 것인가(별로 파일로 추출할 것인가)?                 [ Y ]
+
+    8. Do you like to install prettier to format generated configuration? (Y/n)
+      생성된 구성 포맷을 위해 Prettier를 설치할 것인가?                         [ Y ]
+
+    9. Pick a package manager: (Use arrow keys)
+      패키지 관리자 선택                                                  [ NPM ]
+
+
+  package.json 파일의 script 항목에 실행 명령이 존재한다
+  
+    
