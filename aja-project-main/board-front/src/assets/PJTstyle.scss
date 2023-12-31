@@ -1,0 +1,176 @@
+@import 'reset.scss';
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+
+//font-family
+$font-family-pretendard: 'Pretendard', sans-serif;
+$font-family-roboto: 'Roboto', sans-serif;
+
+//font-color
+$gray:#959595;
+$black:#232227;
+$green:#40ad8e;
+$red:#DE4D4D;
+$dark:#211f25;
+
+//font-size
+$txt-font-size: 0.875rem;
+$txt-font-weight: 300;
+$txt-line-height: 1.4;
+
+$normal-font-size: 1rem;
+$normal-font-weight: 400;
+$normal-line-height: 1.5;
+
+$semi-font-size: 1.25rem;
+$semi-font-weight: 600;
+$semi-line-height: 1.6;
+
+$bold-font-size: 1.8rem;
+$bold-font-weight: 800;
+$bold-line-height: 1.7;
+
+//margin
+$common-margin: 16px;
+
+@mixin font-style($font-size, $font-weight, $line-height) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}
+
+@mixin light-txt {
+  @include font-style($txt-font-size, $txt-font-weight, $txt-line-height);
+}
+
+@mixin normal-txt {
+  @include font-style($normal-font-size, $normal-font-weight, $normal-line-height);
+}
+
+@mixin semi-txt {
+  @include font-style($semi-font-size, $semi-font-weight, $semi-line-height);
+}
+
+@mixin bold-txt {
+  @include font-style($bold-font-size, $bold-font-weight, $bold-line-height);
+}
+
+@mixin boxShadow {
+  box-shadow: 1px 2px 3px rgba(255, 255, 255, 0.1);
+}
+
+.fix{
+  position:fixed;
+  top:0; 
+  left:0;
+  z-index:1;
+}
+
+.round{
+  border-radius: 15px;
+}
+
+.borderbox{
+  border: 1px solid $gray;
+}
+
+.bg-dark {
+  background-color: $dark;
+  color: $gray;
+}
+
+a,h1,h2,h3,h4,h5,h6,p,span {
+    color: $gray;
+}
+
+body {
+  font-family: $font-family-roboto, $font-family-pretendard;
+  margin: 0;
+  padding: 0;
+  background-color: $dark;
+}
+
+header{
+    margin-bottom: 16px;
+}
+
+.content-section {
+    margin: 20px 0;
+  }
+
+//input
+input{
+    background-color: $black;
+    color: $gray;
+}
+input:focus {outline: none;}
+
+input::placeholder {
+    background-color: $black;
+    color: $gray; 
+}
+// card
+.card {
+    background-color: $black;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: $common-margin;
+    margin-bottom: $common-margin;
+  
+    .card-title {
+      @include semi-txt;
+      color: $green;
+      margin-bottom: 8px;
+    }
+  
+    .card-content {
+      @include normal-txt;
+      color: $gray;
+    }
+  }
+  
+  // modal
+  .modal {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    .modal-content {
+      background-color: $black;
+      border-radius: 8px;
+      padding: $common-margin;
+  
+      .modal-title {
+        @include bold-txt;
+        color: $red;
+        margin-bottom: 8px;
+      }
+  
+      .modal-body {
+        @include normal-txt;
+        color: $gray;
+      }
+
+
+
+    }
+  }
+  .modal h1{
+    @include semi-txt;
+    color: $green;
+    margin-bottom: 8px;
+  }
+  //form
+  .form {
+    .form-control {
+      width: 100%;
+      padding: $common-margin;
+      border: 1px solid $gray;
+    }
+  }

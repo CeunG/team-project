@@ -1,0 +1,186 @@
+@mixin fontsb($size, $weight) {
+  font: {
+    size: $size;
+    weight: $weight;
+  }
+}
+
+#pop-slide {
+  display: none;
+
+  .pop-slide-mates {
+
+    // background-color: $borderLight;
+    text-align: center;
+    overflow-y: scroll;
+
+    .btn-close-box-wrap {
+      width: 100%;
+      padding-top: 2%;
+      text-align: right;
+
+      .btn-close-box {
+        margin-right: 5%;
+      }
+    }
+
+    .numof-mates-wrap {
+      margin: 8% 0;
+
+      >p {
+        @include fontsb(18px, 700);
+        margin-bottom: 12px;
+      }
+
+      .numof-mates {}
+
+      .icon-modify {
+        margin-left: 5%;
+      }
+    }
+
+
+    .record-list-mini {
+      width: 100%;
+
+      >li {
+        width: 60%;
+        margin: 0 auto;
+        margin-bottom: 6%;
+        padding-bottom: 10%;
+        // border-bottom: 1px solid $colorLightGray;
+
+        .checkbox-wrap {
+          padding-top: 2%;
+          text-align: left;
+        }
+
+        .mate-pf-img {
+          margin: 3% 0;
+
+          .icon-pic {
+            display: block;
+            margin: 0 auto;
+            width: 52px;
+            height: 52px;
+            background-color: transparent;
+            border-radius: 500px;
+          }
+        }
+
+        .nickname {}
+
+        .wrap-hash {
+          margin-top: 3%;
+
+          .list-hash {
+            margin: 0 1%
+          }
+        }
+
+        .record-wrap {
+          margin-bottom: 4%;
+        }
+
+        .numof-wrap {
+          margin-bottom: 5%;
+
+          >span {
+            margin: 0 2%;
+          }
+        }
+
+        .in-unfllow-btn {}
+      }
+    }
+
+  }
+
+
+
+  .pop-slide-recomm {
+    z-index: 9;
+    // background-color: $borderLight;
+    text-align: center;
+    overflow-y: scroll;
+    height: 100%;
+
+    .btn-close-box-wrap {
+      width: 100%;
+      padding-top: 2%;
+      text-align: right;
+
+      .btn-close-box {
+        margin-right: 5%;
+      }
+    }
+
+    .mypf-wrap {
+      width: 60%;
+      margin: 12% auto 4% auto;
+      padding-bottom: 8%;
+
+      .mypf-pic {
+        .icon-pic {
+          display: block;
+          margin: 0 auto;
+          width: 52px;
+          height: 52px;
+          background-color: transparent;
+          border-radius: 500px;
+        }
+      }
+
+      .nickname {}
+
+      .wrap-hash {
+        margin-top: 3%;
+
+        .list-hash {
+          margin: 0 1%
+        }
+      }
+    }
+
+    .sub-tit {
+      margin-bottom: 5%;
+    }
+
+    .goal-list-mini {
+      width: 60%;
+      margin: 0 auto;
+
+      >li {
+        margin: 8% 0;
+        padding: 10% 0;
+        // border-bottom: 1px solid $colorDarkwhite;
+
+        .goal-list-tit {
+          @include fontsb(14px, 700);
+
+          .icon-goal {
+            // color: $colorSkyblue;
+            font-size: 18px;
+            margin-right: 10px;
+          }
+        }
+
+        .numof-wrap {
+          // color: $colorDarkBlue;
+          margin-top: 2%;
+          margin-bottom: 5%;
+
+          >span {
+            margin: 0 5%;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+#pop-form {
+  display: none;
+  background-color: blue;
+}
