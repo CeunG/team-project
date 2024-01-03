@@ -14,6 +14,7 @@
     "prettier/prettier": 0,
     "space-before-function-paren": "off",
     "require-jsdoc": 0
+    "import/prefer-default-export": "off"
   },
   "plugins": ["prettier"]
 }
