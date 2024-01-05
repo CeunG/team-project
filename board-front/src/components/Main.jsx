@@ -1,585 +1,260 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Buttons from './Buttons';
-import { SlPicture } from "react-icons/sl";
-import { BsFileEarmarkBarGraph } from "react-icons/bs";
-import Popslide from './Popslide';
-import Popform from './Popform';
+import styled from 'styled-components';
+import { Box, Avatar, AvatarGroup, Typography, Stack, IconButton, InputBase, List, ListItem, ListItemAvatar, ListItemText, Link, Button, TextField, Divider, Fab, Card, CardActions } from '@mui/material';
+
+import AddIcon from '@mui/icons-material/Add';
+import SearchIcon from '@mui/icons-material/Search';
+import ImageIcon from '@mui/icons-material/Image';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import Calendar from './Calendar';
+import GoalList from './GoalList'
+import Diary from './Diary';
+import PopAddDiary from './PopAddDiary';
 
 
-function Main() {
+const Main = () => {
+
+  const StyledSearch = styled.div`
+  background-color:transparent;
+  // background-color: #111;
+  border-radius:50px;
+  padding:14px 20px;
+  width:100%;
+  border:1px solid #232227;
+`;
+
+  const StyledUl = styled.ul`
+  list-style:none;
+  overflow:hidden;
+  & > li{
+    float:left;
+  }
+`;
+
+
+
+  const StyledBox = styled(Box)({
+    border: '1px solid #232227',
+    backgroundColor: '#151515',
+    borderRadius: '25px',
+    padding: '24px 20px',
+  });
+
+
+  const StyledSubTitle1 = styled(Typography)({
+    display: "block",
+    paddingBottom: '12px'
+  })
+
+
+  const StyledBoxSub = styled(Box)({
+    border: '1px solid #232227',
+    backgroundColor: '#151515',
+    borderRadius: '25px'
+  })
+
+
+  //메이트 리스트 예시
+  const newMateList = [
+    {
+      pic: <ImageIcon />,
+      name: "Nickname",
+      startDate: '12월1일~'
+    },
+    {
+      pic: <ImageIcon />,
+      name: "Nickname",
+      startDate: '12월1일~'
+    },
+    {
+      pic: <ImageIcon />,
+      name: "Nickname",
+      startDate: '12월1일~'
+    },
+    {
+      pic: <ImageIcon />,
+      name: "Nickname",
+      startDate: '12월1일~'
+    },
+    {
+      pic: <ImageIcon />,
+      name: "Nickname",
+      startDate: '12월1일~'
+    },
+    {
+      pic: <ImageIcon />,
+      name: "Nickname",
+      startDate: '12월1일~'
+    },
+    {
+      pic: <ImageIcon />,
+      name: "Nickname",
+      startDate: '12월1일~'
+    },
+    {
+      pic: <ImageIcon />,
+      name: "Nickname",
+      startDate: '12월1일~'
+    },
+    {
+      pic: <ImageIcon />,
+      name: "Nickname",
+      startDate: '12월1일~'
+    }
+  ]
+
 
   return (
 
-    <main>
-      <h2 className="cate-tit radius-15">Mates</h2>
+    <Box p={2} width={'100%'} >
 
-      <div className="grid-wrap">
-        <section className="sec-left radius-25">
-          <div className="mates-list-wrap">
-            <p className="sub-tit">내 메이트들</p>
-            <div className="mates-list">
+      <Typography pt={2} pl={3} variant='h4'>Mates</Typography>
+
+      <Box p={2} display='grid' gridTemplateColumns='repeat(2, 1fr)' gridTemplateRows='repeat(2, auto)' gap={3} >
+
+        <StyledBox gridColumn='1' gridRow='1' sx={{}}>
+
+          <Stack
+            direction="column"
+            justifyContent="flex-start"
+            alignItems="stretch"
+            spacing={4}
+          >
+
+
+            <Box p={2} sx={{}}>
+
+              <StyledSubTitle1 variant='h6' style={{}}>내 메이트들</StyledSubTitle1>
+
+              <AvatarGroup total={10} spacing='medium' sx={{ float: 'left' }}>
+                <Avatar sx={{ width: '56px', height: '56px' }} alt="Remy Sharp" src="http://material-ui.com/static/images/avatar/1.jpg" />
+                <Avatar sx={{ width: '56px', height: '56px' }} alt="Travis Howard" src="http://material-ui.com/static/images/avatar/2.jpg" />
+                <Avatar sx={{ width: '56px', height: '56px' }} alt="Agnes Walker" src="http://material-ui.com/static/images/avatar/4.jpg" />
+                <Avatar sx={{ width: '56px', height: '56px' }} alt="Trevor Henderson" src="http://material-ui.com/static/images/avatar/5.jpg" />
+              </AvatarGroup>
+
+
+              <Button size='small' variant='outlined' sx={{ borderRadius: '50px', textTransform: 'capitalize', float: 'right', }}>Add Mate</Button>
+            </Box>
+
+
+            {/* <Divider /> */}
+
+
+            <Box p={2} sx={{}}>
+              <StyledSubTitle1 variant='h6'>Search</StyledSubTitle1>
+              <StyledSearch>
+                <InputBase placeholder='search' />
+                <Button size='small' variant='outlined' sx={{ borderRadius: '50px', textTransform: 'capitalize', float: 'right', }}>Enter</Button>
+              </StyledSearch>
+            </Box>
+
+
+            <Box p={2} sx={{}}>
+              <StyledSubTitle1 variant='h6' style={{}}>추천 메이트</StyledSubTitle1>
+
+              <List>
+                {newMateList.map((mate, index) => (
+                  <ListItem key={index}>
+                    <ListItemAvatar>
+                      <Avatar>{mate.pic}</Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={mate.name} secondary={mate.startDate} />
+                    <StyledUl>
+                      <li><Link href="#" variant="caption">#diet</Link></li>
+                      <li><Link href="#" variant="caption">#subject</Link></li>
+                      <li><Link href="#" variant="caption">#subject</Link></li>
+                      <li><Link href="#" variant="caption">#subject</Link></li>
+                    </StyledUl>
+                    <Button size="small" variant='contained' sx={{ borderRadius: '50px', textTransform: 'capitalize' }}>Follow</Button>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+          </Stack>
+        </StyledBox>
+
+
+
+
+        <StyledBox gridColumn='2' gridRow='1'>
+          <Stack
+            direction="column"
+            justifyContent="flex-start"
+            alignItems="stretch"
+            spacing={4}
+          >
+
+            <Box p={2} sx={{ backgroundColor: 'primary.main', borderRadius: '15px' }}>
+              <StyledSubTitle1 variant='h6'>나의 기록</StyledSubTitle1>
+              <Typography variant='body1'>목표 설정하고 기록하기</Typography>
               <ul>
-                <li className="mates mates1">
-                  <span>친구1사진</span>
-                </li>
-                <li className="mates mates2">
-                  <span>친구2사진</span>
-                </li>
-                <li className="mates mates3">
-                  <span>친구3사진</span>
-                </li>
-                <li className="mates mates4">
-                  <span>친구4사진</span>
-                </li>
-                <li className="mates mates3">
-                  <span>친구3사진</span>
-                </li>
-                <li className="mates mates1">
-                  <span>친구4사진</span>
-                </li>
+                <li>올린 피드<span>1개</span></li>
+                <li>나의 목표 지금까지<span>6개</span></li>
               </ul>
-            </div>
+              <Avatar
+                alt="Remy Sharp"
+                src="/static/images/avatar/1.jpg"
+                sx={{ width: 56, height: 56 }}
+              />
+            </Box>
 
-            <p className="mates-list-total">
-              + <span>4</span>
-            </p>
 
-            <button className="btn-new-circle" type="button">추가</button>
-          </div>
 
-          <div className="form-search">
-            <form>
-              <label className="txt-light" for="search">find new mates</label>
-              <input className="in-search-bar" type="text" id="search" name="search" placeholder="search" />
-              <Buttons size="small" className="in-search-btn" >Enter</Buttons>
-              <span className="txt-light">나의 같은 관심사를 가진 메이트들을 찾아보세요!</span>
-            </form>
-          </div>
+            <Box p={2} sx={{}}>
+              calendar
+              <Calendar />
+            </Box>
 
-          <div className="mates-recomm">
-            <p className="sub-tit">추천 메이트</p>
-            <div className="lists-wrap">
-              <ul>
-                <li className='radius-500'>
-                  <div className="in-list">
-                    <span className="pic-rmm-mate"></span>
-                    <div className="wrap-hash">
-                      <p className="bold-tit">Fnickname</p>
-                      <ul className="hash-list">
-                        <li><Link to="#">#diet</Link></li>
-                        <li><Link to="#">#건강하기</Link></li>
-                        <li><Link to="#">#같이할사람</Link></li>
-                        <li><Link to="#">#주3회</Link></li>
-                      </ul>
-                    </div>
-                    <div className="input-date">12.00 ~</div>
-                    <div className="btn-area">
-                      <Buttons size="small" className="in-follow-btn" >Follow</Buttons>
-                    </div>
-                  </div>
-                </li>
 
-                <li className='radius-500'>
-                  <div className="in-list">
-                    <span className="pic-rmm-mate">
+            <Box p={2} sx={{}}>
+              <StyledSubTitle1 variant='h6'>목표</StyledSubTitle1>
+              <div>셀렉트 컴포넌트 넣기</div>
+              <GoalList />
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <IconButton variant="outlined" aria-label="add goal">
+                  <AddOutlinedIcon />
+                </IconButton>
 
-                    </span>
-                    <div className="wrap-hash">
-                      <p className="bold-tit">Fnickname</p>
-                      <ul className="hash-list">
-                        <li><Link to="#">#diet</Link></li>
-                        <li><Link to="#">#건강하기</Link></li>
-                        <li><Link to="#">#같이할사람</Link></li>
-                        <li><Link to="#">#탄탄지</Link></li>
-                      </ul>
-                    </div>
-                    <div className="input-date">12.00 ~</div>
-                    <div className="btn-area">
-                      <Buttons size="small" className="in-follow-btn" >Follow</Buttons>
-                    </div>
-                  </div>
-                </li>
+                <TextField id="standard-basic" label="goal" variant="standard" />
+                <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+                <Button size="small" variant='contained' sx={{ borderRadius: '50px', textTransform: 'capitalize' }}>Enter</Button>
+              </Box>
+            </Box>
 
-                <li className='radius-500'>
-                  <div className="in-list">
-                    <span className="pic-rmm-mate">
 
-                    </span>
-                    <div className="wrap-hash">
-                      <p className="bold-tit">Fnickname</p>
-                      <ul className="hash-list">
-                        <li><Link to="#">#diet</Link></li>
-                        <li><Link to="#">#건강하기</Link></li>
-                        <li><Link to="#">#같이할사람</Link></li>
-                      </ul>
-                    </div>
-                    <div className="input-date">12.00 ~</div>
-                    <div className="btn-area">
-                      <Buttons size="small" className="in-follow-btn" >Follow</Buttons>
-                    </div>
-                  </div>
-                </li>
 
+            <Box p={2} sx={{}}>
+              <StyledSubTitle1 variant='h6'>기록</StyledSubTitle1>
+              <div>셀렉트 컴포넌트 넣기</div>
+              <GoalList />
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <IconButton variant="outlined" aria-label="add goal">
+                  <AddOutlinedIcon />
+                </IconButton>
 
-                <li className='radius-500'>
-                  <div className="in-list">
-                    <span className="pic-rmm-mate">
+                <TextField id="standard-basic" label="goal" variant="standard" />
+                <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+                <Button size="small" variant='contained' sx={{ borderRadius: '50px', textTransform: 'capitalize' }}>Enter</Button>
+              </Box>
+            </Box>
 
-                    </span>
-                    <div className="wrap-hash">
-                      <p className="bold-tit">Fnickname</p>
-                      <ul className="hash-list">
-                        <li><Link to="#">#diet</Link></li>
-                        <li><Link to="#">#건강하기</Link></li>
-                        <li><Link to="#">#같이할사람</Link></li>
-                      </ul>
-                    </div>
-                    <div className="input-date">12.00 ~</div>
-                    <div className="btn-area">
-                      <Buttons size="small" className="in-follow-btn" >Follow</Buttons>
-                    </div>
-                  </div>
-                </li>
+          </Stack>
+        </StyledBox>
 
 
-                <li className='radius-500'>
-                  <div className="in-list">
-                    <span className="pic-rmm-mate">
 
-                    </span>
-                    <div className="wrap-hash">
-                      <p className="bold-tit">Fnickname</p>
-                      <ul className="hash-list">
-                        <li><Link to="#">#diet</Link></li>
-                        <li><Link to="#">#건강하기</Link></li>
-                        <li><Link to="#">#같이할사람</Link></li>
-                      </ul>
-                    </div>
-                    <div className="input-date">12.00 ~</div>
-                    <div className="btn-area">
-                      <Buttons size="small" className="in-follow-btn" >Follow</Buttons>
-                    </div>
-                  </div>
-                </li>
+        <StyledBox component='div' gridRow='2' gridColumn='span 2' sx={{ overflow: 'auto', position: 'relative' }}>
+          <StyledSubTitle1 variant='h6'>일기 소소한 이야기</StyledSubTitle1>
 
+          <Diary />
+          <PopAddDiary sx={{ position: 'absolute', left: 0, top: 0 }} />
+        </StyledBox>
+      </Box>
 
-                <li className='radius-500'>
-                  <div className="in-list">
-                    <span className="pic-rmm-mate">
 
-                    </span>
-                    <div className="wrap-hash">
-                      <p className="bold-tit">Fnickname</p>
-                      <ul className="hash-list">
-                        <li><Link to="#">#diet</Link></li>
-                        <li><Link to="#">#건강하기</Link></li>
-                        <li><Link to="#">#같이할사람</Link></li>
-                      </ul>
-                    </div>
-                    <div className="input-date">12.00 ~</div>
-                    <div className="btn-area">
-                      <Buttons size="small" className="in-follow-btn" >Follow</Buttons>
-                    </div>
-                  </div>
-                </li>
-
-                <li className='radius-500'>
-                  <div className="in-list">
-                    <span className="pic-rmm-mate">
-
-                    </span>
-                    <div className="wrap-hash">
-                      <p className="bold-tit">Fnickname</p>
-                      <ul className="hash-list">
-                        <li><Link to="#">#diet</Link></li>
-                        <li><Link to="#">#건강하기</Link></li>
-                        <li><Link to="#">#같이할사람</Link></li>
-                      </ul>
-                    </div>
-                    <div className="input-date">12.00 ~</div>
-                    <div className="btn-area">
-                      <Buttons size="small" className="in-follow-btn" >Follow</Buttons>
-                    </div>
-                  </div>
-                </li>
-
-                <li className='radius-500'>
-                  <div className="in-list">
-                    <span className="pic-rmm-mate">
-
-                    </span>
-                    <div className="wrap-hash">
-                      <p className="bold-tit">Fnickname</p>
-                      <ul className="hash-list">
-                        <li><Link to="#">#diet</Link></li>
-                        <li><Link to="#">#건강하기</Link></li>
-                        <li><Link to="#">#같이할사람</Link></li>
-                      </ul>
-                    </div>
-                    <div className="input-date">12.00 ~</div>
-                    <div className="btn-area">
-                      <Buttons size="small" className="in-follow-btn" >Follow</Buttons>
-                    </div>
-                  </div>
-                </li>
-
-                <li className='radius-500'>
-                  <div className="in-list">
-                    <span className="pic-rmm-mate">
-
-                    </span>
-                    <div className="wrap-hash">
-                      <p className="bold-tit">Fnickname</p>
-                      <ul className="hash-list">
-                        <li><Link to="#">#diet</Link></li>
-                        <li><Link to="#">#건강하기</Link></li>
-                        <li><Link to="#">#같이할사람</Link></li>
-                      </ul>
-                    </div>
-                    <div className="input-date">12.00 ~</div>
-                    <div className="btn-area">
-                      <Buttons size="small" className="in-follow-btn" >Follow</Buttons>
-                    </div>
-                  </div>
-                </li>
-
-                <li className='radius-500'>
-                  <div className="in-list">
-                    <span className="pic-rmm-mate">
-
-                    </span>
-                    <div className="wrap-hash">
-                      <p className="bold-tit">Fnickname</p>
-                      <ul className="hash-list">
-                        <li><Link to="#">#diet</Link></li>
-                        <li><Link to="#">#건강하기</Link></li>
-                        <li><Link to="#">#같이할사람</Link></li>
-                      </ul>
-                    </div>
-                    <div className="input-date">12.00 ~</div>
-                    <div className="btn-area">
-                      <Buttons size="small" className="in-follow-btn" >Follow</Buttons>
-                    </div>
-                  </div>
-                </li>
-
-                <li className='radius-500'>
-                  <div className="in-list">
-                    <span className="pic-rmm-mate">
-
-                    </span>
-                    <div className="wrap-hash">
-                      <p className="bold-tit">Fnickname</p>
-                      <ul className="hash-list">
-                        <li><Link to="#">#diet</Link></li>
-                        <li><Link to="#">#건강하기</Link></li>
-                        <li><Link to="#">#같이할사람</Link></li>
-                      </ul>
-                    </div>
-                    <div className="input-date">12.00 ~</div>
-                    <div className="btn-area">
-                      <Buttons size="small" className="in-follow-btn" >Follow</Buttons>
-                    </div>
-                  </div>
-                </li>
-
-
-                <li className='radius-500'>
-                  <div className="in-list">
-                    <span className="pic-rmm-mate">
-
-                    </span>
-                    <div className="wrap-hash">
-                      <p className="bold-tit">Fnickname</p>
-                      <ul className="hash-list">
-                        <li><Link to="#">#diet</Link></li>
-                        <li><Link to="#">#건강하기</Link></li>
-                        <li><Link to="#">#같이할사람</Link></li>
-                      </ul>
-                    </div>
-                    <div className="input-date">12.00 ~</div>
-                    <div className="btn-area">
-                      <Buttons size="small" className="in-follow-btn" >Follow</Buttons>
-                    </div>
-                  </div>
-                </li>
-
-
-                <li className='radius-500'>
-                  <div className="in-list">
-                    <span className="pic-rmm-mate">
-
-                    </span>
-                    <div className="wrap-hash">
-                      <p className="bold-tit">Fnickname</p>
-                      <ul className="hash-list">
-                        <li><Link to="#">#diet</Link></li>
-                        <li><Link to="#">#건강하기</Link></li>
-                        <li><Link to="#">#같이할사람</Link></li>
-                      </ul>
-                    </div>
-                    <div className="input-date">12.00 ~</div>
-                    <div className="btn-area">
-                      <Buttons size="small" className="in-follow-btn" >Follow</Buttons>
-                    </div>
-                  </div>
-                </li>
-
-
-              </ul>
-            </div>
-          </div>
-
-
-
-          <Popslide />
-
-        </section>
-
-
-        <section className='sec-my radius-25'>
-          <div className="record-info-box">
-            <p className="sub-tit">나의 기록</p>
-            <div className="info-box-txt">
-              <p>목표 설정학고 기록하기</p>
-              <ul className="count-list">
-                <li>올린 피드<span class="point-tit">1개</span></li>
-                <li>나의 목표 지금까지<span class="point-tit">6개</span></li>
-              </ul>
-            </div>
-
-            <div className="pic-concept">
-              <SlPicture class="icon-file">
-                <span>프로필 이미지...아니면 기록 카테고리 전용 자극짤</span>
-              </SlPicture>
-            </div>
-
-            <div className="btn-graph">
-              <Link to="#" className='btn-graph-link'>
-                내가 이룬 목표들
-                <BsFileEarmarkBarGraph />
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <section className="sec-right radius-25">
-          <div className="record-forms">
-            <div className="sec-calendar">
-              달력 넣기(라이브러리)
-            </div>
-
-            <section className="sec-goal">
-
-              <div className="sec-top">
-                <p className="sub-tit">목표</p>
-
-                <div className="sec-ctrl">
-                  <div className="selectbox-sort">
-                    <form>
-                      <select>
-                        <option value="sort-regi">등록순</option>
-                        <option value="sort-target">미완료 목표들</option>
-                      </select>
-                    </form>
-                  </div>
-                </div>
-              </div>
-
-
-              <div className="form-goal chkform">
-                <form>
-                  <fieldset>
-                    <legend>목표</legend>
-
-                    <div className="goal-list-wrap chkform-list-wrap">
-                      <ul className="goal-list chkform-list">
-                        <li>
-                          <div className="input-wrap">
-                            <input type="checkbox" id="goal-list-1" value="목표1" />
-                            <label for="goal-list-1">1월까지 체중감량 3kg</label>
-                          </div>
-                          <p className="input-data">2023.12.30</p>
-                          <button className="btn-delte" type="button">
-                            삭제
-                          </button>
-                        </li>
-
-                        <li>
-                          <div className="input-wrap">
-                            <input type="checkbox" id="goal-list-2" value="목표1" />
-                            <label for="goal-list-2">1월까지 체중감량 3kg</label>
-                          </div>
-                          <p className="input-data">2023.12.30</p>
-                          <button className="btn-delte" type="button">
-                            삭제
-                          </button>
-                        </li>
-
-                        <li>
-                          <div className="input-wrap">
-                            <input type="checkbox" id="goal-list-3" value="목표1" />
-                            <label for="goal-list-3">1월까지 체중감량 3kg</label>
-                          </div>
-                          <p className="input-data">2023.12.30</p>
-                          <button className="btn-delte" type="button">
-                            삭제
-                          </button>
-                        </li>
-                      </ul>
-
-                      <div className="input-addlist">
-                        <button className="btn-plus" type="button">ADD</button>
-                        <div className='new-input-warp'>
-                          <label for="new-list"></label>
-                          <input type="text" id="new-list" placeholder="새로운 목표를 입력해주세요" />
-                        </div>
-                        <button className="btn-submit" type="submit">Enter</button>
-                      </div>
-
-                    </div>
-                  </fieldset>
-                </form>
-              </div>
-            </section>
-
-
-            <section className="sec-record">
-
-              <div className="sec-top">
-                <p className="sub-tit">기록</p>
-
-                <div className="date-btns">
-                  <span className="date-today">today</span>
-
-                  <div className="btns">
-                    <span className="btn-prev">prev</span>
-                    <span className="btn-next">next</span>
-                  </div>
-                </div>
-
-                <div className="sec-ctrl">
-                  <div className="selectbox-sort">
-                    <form>
-                      <select>
-                        <option value="sort-regi">등록순</option>
-                        <option value="sort-target">미완료 목표들</option>
-                      </select>
-                    </form>
-                  </div>
-                </div>
-              </div>
-
-
-              <div className="form-goal chkform">
-                <form>
-                  <fieldset>
-                    <legend>기록</legend>
-
-                    <div className="regi-list-wrap chkform-list-wrap">
-                      <ul className="regi-list chkform-list">
-                        <li>
-                          <div className="input-wrap">
-                            <input type="checkbox" id="record-list-1" value="기록1" />
-                            <label for="record-list-1">물 섭취 1.5L </label>
-                          </div>
-                          <button className="btn-delte" type="button">
-                            삭제
-                          </button>
-                        </li>
-
-                        <li>
-                          <div className="input-wrap">
-                            <input type="checkbox" id="record-list-1" value="기록1" />
-                            <label for="record-list-1">물 섭취 1.5L </label>
-                          </div>
-                          <button className="btn-delte" type="button">
-                            삭제
-                          </button>
-                        </li>
-
-                        <li>
-                          <div className="input-wrap">
-                            <input type="checkbox" id="record-list-1" value="기록1" />
-                            <label for="record-list-1">물 섭취 1.5L </label>
-                          </div>
-                          <button className="btn-delte" type="button">
-                            삭제
-                          </button>
-                        </li>
-                      </ul>
-
-                      <div className="input-addlist">
-                        <button className="btn-plus" type="button">ADD</button>
-                        <div className='new-input-warp'>
-                          <label for="new-list"></label>
-                          <input type="text" id="new-list" placeholder="오늘을 기록 해주세요" />
-                        </div>
-                        <button className="btn-submit" type="submit">Enter</button>
-                      </div>
-                    </div>
-                  </fieldset>
-
-                </form>
-              </div>
-
-            </section>
-
-
-            <section className="sec-diary">
-              <div className="sec-top">
-                <p className="sub-tit">
-                  일기<span>소소한 이야기</span>
-                </p>
-
-                <div className="btns">
-                  <span className="btn-prev">prev</span>
-                  <span className="btn-next">next</span>
-                </div>
-              </div>
-
-              <div className='diary-all-wrap'>
-                <div className="diary-list-wrap">
-
-                  <div className="btn-add-wrap">
-                    <button className="btn-plus" type="button">ADD</button>
-                  </div>
-
-                  <div className='content-diary'>
-                    <div className="input-date">12.00 일요일 </div>
-                    <div className="pic-area">
-                      <SlPicture className='icon-file' />
-                    </div>
-                    <p className="sub-tit">food!</p>
-                    <p className="content-txt">Some quick example text to build
-                      on the card title and content.</p>
-                    <button className="btn-delte" type="button">삭제</button>
-                  </div>
-
-                  <div className='content-diary'>
-                    <div className="input-date">12.00 월요일</div>
-                    <div className="pic-area">
-                      <SlPicture className='icon-file' />
-                    </div>
-                    <p className="sub-tit">ate something at starbucks</p>
-                    <p className="content-txt">Some quick example text to build on the card title and make up the
-                      bulk of the card’s content.</p>
-                    <button className="btn-delte" type="button">삭제</button>
-                  </div>
-
-                </div>
-              </div>
-            </section>
-          </div>
-
-          <Popform />
-
-        </section>
-
-      </div>
-    </main>
+    </Box >
   )
 }
 
-export default Main
+export default Main;
