@@ -345,7 +345,8 @@ const [passwordChange, setPasswordChange] = useRecoilState(passwordChangeAtom);
     updateProfile(newProfileData)
       .then(() => setProfileData(newProfileData))
       .then(() => closeProfileModal())
-      .catch((error) => console.error('프로필 변경 실패:', error));  
+      .catch((error) => console.error('프로필 변경 실패:', error));
+  };
   
   const saveIdChanges = () => {
     const { currentUsername, newUsername } = usernameChange;
