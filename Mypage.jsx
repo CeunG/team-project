@@ -340,38 +340,55 @@ const [passwordChange, setPasswordChange] = useRecoilState(passwordChangeAtom);
   const openGoalModal = () => openModal(setGoalModalVisible);
   const closeGoalModal = () => closeModal(setGoalModalVisible);
 
-  const saveProfileChanges = (newUsername) => {
+  const saveProfileChanges = async (newUsername) => {
     const newProfileData = { ...profileData, username: newUsername, name: '새로운 이름', bio: '새로운 자기소개' };
-    updateProfile(newProfileData)
-      .then(() => setProfileData(newProfileData))
-      .then(() => closeProfileModal())
-      .catch((error) => console.error('프로필 변경 실패:', error));
+    try {
+      const response = await axios.post('/api/user/profile/update', newProfileData); 
+      console.log(response.data.message);
+      setProfileData(newProfileData);
+      closeProfileModal();
+    } catch (error) {
+      console.error('프로필 변경 실패:', error);
+    }
   };
   
-  const saveIdChanges = () => {
+  const saveIdChanges = async () => {
     const { currentUsername, newUsername } = usernameChange;
-    changeUsername({ currentUsername, newUsername })
-      .then(() => closeIdChangeModal())
-      .catch((error) => console.error('아이디 변경 실패:', error));  
+    try {
+      await axios.post('/api/user/username/update', { currentUsername, newUsername });
+      closeIdChangeModal();
+    } catch (error) {
+      console.error('아이디 변경 실패:', error);  
+    }
   };
   
-  const savePasswordChanges = () => {
+  const savePasswordChanges = async () => {
     const { currentPassword, newPassword, confirmNewPassword } = passwordChange;
-    changePassword({ currentPassword, newPassword, confirmNewPassword })
-      .then(() => closePasswordModal())
-      .catch((error) => console.error('비밀번호 변경 실패:', error));  
+    try {
+      await axios.post('/api/user/password/update', { currentPassword, newPassword, confirmNewPassword }); 
+      closePasswordModal();
+    } catch (error) {
+      console.error('비밀번호 변경 실패:', error);
+    }
   };
   
-  const saveDeletedMateList = (mateId) => {
-    deleteMate(mateId)
-      .then(() => console.log('메이트 삭제 성공'))
-      .catch((error) => console.error('메이트 삭제 실패:', error));  
+  const saveDeletedMateList = async (mateId) => {
+    try {
+      await axios.delete(`/api/user/mate/${mateId}`);
+      console.log('메이트 삭제 성공');
+    } catch (error) {
+      console.error('메이트 삭제 실패:', error);
+    }
   };
   
-  const saveGoalChanges = (weightGoal, exerciseGoal, dietGoal) => {
-    updateGoals({ weightGoal, exerciseGoal, dietGoal })
-      .then(() => console.log('목표 수정 성공'))
-      .catch((error) => console.error('목표 수정 실패:', error));  
+  const saveGoalChanges = async (weightGoal, exerciseGoal, dietGoal) => {
+    try {
+      const response = await axios.post('/api/user/goals/update', { weightGoal, exerciseGoal, dietGoal });
+      console.log(response.data.message);
+      closeGoalModal();
+    } catch (error) {
+      console.error('목표 수정 실패:', error);
+    }
   };
 
 
@@ -419,10 +436,9 @@ const [passwordChange, setPasswordChange] = useRecoilState(passwordChangeAtom);
 
       {/* 프로필 변경 모달 */}
       <StyledDialog open={profileModalVisible} onClose={closeProfileModal}>
-        <DialogTitle>프로필</DialogTitle>
+        <DialogTitle style={{ textAlign: 'center', padding: '10px 0', color: '#fff' }}>프로필</DialogTitle>
         <DialogContent className="modal-content">
           <img width="80" height="80" src="https://img.icons8.com/color/48/test-account.png" alt="test-account" />
-          <h1>프로필</h1>
           <StyledTextField type="text" placeholder="이름"  />
           <StyledTextField type="text" placeholder="자기소개" />
           <StyledTextField type="text" placeholder="키" />
@@ -438,7 +454,7 @@ const [passwordChange, setPasswordChange] = useRecoilState(passwordChangeAtom);
       {/* 아이디 변경 모달 */}
       <StyledDialog open={idChangeModalVisible} onClose={closeIdChangeModal}>
       <Dialog open={idChangeModalVisible} onClose={closeIdChangeModal}>
-        <DialogTitle>아이디 변경</DialogTitle>
+        <DialogTitle style={{ textAlign: 'center', padding: '10px 0', color: '#fff' }}>아이디 변경</DialogTitle>
         <DialogContent className="modal-content">
           <StyledTextField
           type="text"
@@ -463,7 +479,7 @@ const [passwordChange, setPasswordChange] = useRecoilState(passwordChangeAtom);
       {/* 비밀번호 변경 모달 */}
       <StyledDialog open={passwordModalVisible} onClose={closePasswordModal}>
       <Dialog open={passwordModalVisible} onClose={closePasswordModal}>
-        <DialogTitle>비밀번호 변경</DialogTitle>
+        <DialogTitle style={{ textAlign: 'center', padding: '10px 0', color: '#fff' }}>비밀번호 변경</DialogTitle>
         <DialogContent className="modal-content">
           <StyledTextField
           type="password"
@@ -492,9 +508,8 @@ const [passwordChange, setPasswordChange] = useRecoilState(passwordChangeAtom);
       {/* 메이트 수정 모달 */}
       <StyledDialog open={mateModalVisible} onClose={closeMateModal}>
       <Dialog open={mateModalVisible} onClose={closeMateModal}>
-        <DialogTitle>메이트 수정</DialogTitle>
+        <DialogTitle style={{ textAlign: 'center', padding: '10px 0', color: '#fff' }}>메이트 수정</DialogTitle>
         <DialogContent className="modal-content text-center">
-          <h1>메이트 수정</h1>
           <p>현재 메이트 목록:</p>
         <List>
       {mateList.map((mate) => (
@@ -532,7 +547,7 @@ const [passwordChange, setPasswordChange] = useRecoilState(passwordChangeAtom);
       {/* 목표 수정 모달 */}
       <StyledDialog open={goalModalVisible} onClose={closeGoalModal}>
       <Dialog open={goalModalVisible} onClose={closeGoalModal}>
-        <DialogTitle>목표 수정</DialogTitle>
+        <DialogTitle style={{ textAlign: 'center', padding: '10px 0', color: '#fff' }} >목표 수정</DialogTitle>
         <DialogContent className="modal-content">
           <label htmlFor="weightGoal" style={{ fontSize: '16px', fontWeight: 'bold', color: '#40ad8e' }}>
             목표 체중:
